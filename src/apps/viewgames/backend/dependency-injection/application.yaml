@@ -1,2 +1,4 @@
 imports:
+  - { resource: ./Authentication/application.yaml }
+  - { resource: ./Shared/application.yaml }
   - { resource: ./apps/application.yaml }

@@ -1,7 +1,6 @@
 import { ViewGamesBackendApp } from "./ViewGamesBackendApp";
 
 try {
-    console.log('hola')
     new ViewGamesBackendApp().start();
 } catch (error) {
     

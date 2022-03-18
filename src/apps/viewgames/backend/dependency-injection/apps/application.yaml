@@ -1,5 +1,5 @@
 services:
 
-  Apps.viewgames.controllers.UserPostController:
-    class: ../../controllers/UserPostController
-    arguments: []
+  Apps.viewgames.controllers.AuthController:
+    class: ../../controllers/AuthController
+    arguments: ["@Shared.CommandBus"]

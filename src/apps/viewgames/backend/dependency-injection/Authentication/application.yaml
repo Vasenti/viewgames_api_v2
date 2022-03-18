@@ -1,0 +1,26 @@
+services:
+  ViewGames.authentication.UserRepository:
+      class: ../../../../../Contexts/ViewGames/Authentication/infrastructure/persistence/MongoUserRepository
+      arguments: ['@Shared.ConnectionManager']
+
+  #Signup process
+  ViewGames.authentication.UserSignup:
+    class: ../../../../../Contexts/ViewGames/Authentication/application/user-signup/UserSignup
+    arguments: ['@ViewGames.authentication.UserRepository', '@Shared.EventBus']
+
+  ViewGames.authentication.UserSignupCommandHandler:
+    class: ../../../../../Contexts/ViewGames/Authentication/application/user-signup/UserSignupCommandHandler
+    arguments: ['@ViewGames.authentication.UserSignup']
+    tags:
+      - { name: 'commandHandler' }
+  
+  #Signin process
+  ViewGames.authentication.UserSignin:
+    class: ../../../../../Contexts/ViewGames/Authentication/application/user-signin/UserSignin
+    arguments: ['@ViewGames.authentication.UserRepository', '@Shared.EventBus']
+
+  ViewGames.authentication.UserSigninCommandHandler:
+    class: ../../../../../Contexts/ViewGames/Authentication/application/user-signin/UserSigninCommandHandler
+    arguments: ['@ViewGames.authentication.UserSignin']
+    tags:
+      - { name: 'commandHandler' }
